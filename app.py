@@ -2,18 +2,19 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from db_server import execute_query
 
-
 app = Flask(__name__)
 # Allow requests from all origins to the /query endpoint
-# CORS(app, resources={r"/query": {"origins": "*"}})
-CORS(app)
-
+CORS(app, resources={r"/query": {"origins": "*"}})
 
 # Your existing route and function definition
 
 
-@app.route('/query', methods=['POST'])
+@app.route('/query', methods=['GET', 'POST'])
 def query_endpoint():
+    if request.method == 'GET':
+        print("Received GET request to /query")
+        return jsonify({"message": "GET request received, but this endpoint only accepts POST requests"}), 405
+
     data = request.json
     print("Received request data:", data)
     query = data.get('query')  # Get the query from the request
@@ -24,4 +25,4 @@ def query_endpoint():
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run()
