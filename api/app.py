@@ -11,6 +11,7 @@ CORS(app, resources={r"/query": {"origins": "*"}})
 
 @app.route('/query', methods=['GET', 'POST'])
 def query_endpoint():
+    return "HELLO THERE"
     if request.method == 'GET':
         print("Received GET request to /query")
         return jsonify({"message": "GET request received, but this endpoint only accepts POST requests"}), 405
