@@ -8,6 +8,13 @@ CORS(app, resources={r"/query": {"origins": "*"}})
 
 # Your existing route and function definition
 
+# methods = ['GET', 'POST']
+
+
+@app.route('/')
+def home():
+    return "Hello vercel"
+
 
 @app.route('/query', methods=['GET', 'POST'])
 def query_endpoint():
