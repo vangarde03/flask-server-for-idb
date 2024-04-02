@@ -9,9 +9,10 @@ CORS(app, resources={r"/": {"origins": "*"}})
 # Your existing route and function definition
 
 #
+# methods=['GET', 'POST']
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def query_endpoint():
     if request.method == 'GET':
         print("Received GET request to /query")
