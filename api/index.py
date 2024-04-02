@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+# from flask_cors import CORS
 from db_server import execute_query
 
 app = Flask(__name__)
 # Allow requests from all origins to the /query endpoint
-CORS(app, resources={r"/": {"origins": "*"}})
+# CORS(app, resources={r"/": {"origins": "*"}})
 
 # Your existing route and function definition
 
@@ -14,7 +14,6 @@ CORS(app, resources={r"/": {"origins": "*"}})
 
 @app.route('/')
 def home():
-    return request
     if request.method == 'GET':
         print("Received GET request to /query")
         return jsonify({"message": "GET request received, but this endpoint only accepts POST requests"}), 405
