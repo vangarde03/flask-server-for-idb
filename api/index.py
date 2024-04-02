@@ -8,6 +8,8 @@ CORS(app, resources={r"/": {"origins": "*"}})
 
 # Your existing route and function definition
 
+#
+
 
 @app.route('/', methods=['GET', 'POST'])
 def query_endpoint():
