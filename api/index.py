@@ -4,7 +4,7 @@ from api.db_server import execute_query
 
 app = Flask(__name__)
 # Allow requests from all origins to the /query endpoint
-CORS(app, resources={r"/query": {"origins": "*"}})
+CORS(app, resources={r"/": {"origins": "*"}})
 
 # Your existing route and function definition
 
